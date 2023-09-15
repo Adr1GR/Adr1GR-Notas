@@ -2,16 +2,13 @@
 title: "Adr1GR Notas"
 permalink: /
 layout: default
-remote_theme: pages-themes/architect@v0.2.0
-plugins:
-- jekyll-remote-theme # add this line to the plugins list if you already have one
 ---
 
 # Notas Gherkin
 
 ## Documenting user stories
 
-- Una historia de usuario tiene que ser un recorrido informal de alguna funcionalidad o feature. 
+- Una historia de usuario tiene que ser un recorrido informal de alguna funcionalidad o feature.
 - Tiene que estar escrita desde la perspectiva del usuario.
 - Tiene que tener un expected result.
 - Tiene que tener acciones que permitan al usuario llegar a ese resultado esperado.
