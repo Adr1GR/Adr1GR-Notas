@@ -6,9 +6,13 @@ layout: default
 
 ##### Esta web esta hecha para uso personal, no es nada profesional ni se corrigen errores de ortografia (uso teclado americano y para algo asi no tengo ganas de ir cambiando de idioma para poner acentos). Son notas personales que hago y subo a esta web para poder acceder en cualquier momento, asi que nadie se tome esto como algo util para aprender. Si quieres informarte mejor aqui tienes un enlace util a la pagina oficial de cucumber: [school.cucumber.io](https://school.cucumber.io/)
 
-# Notas Gherkin
+# Contendido
+1. [Documentado user stories](#documentingUserStories)
+2. [Gherkin Keywords](#gherkinKeywords)
+    - [Feature]()
+# Notas Gherkin 
 
-## Documenting user stories
+## Documenting user stories <a name="documentingUserStories"></a>
 
 - Una historia de usuario tiene que ser un recorrido informal de alguna funcionalidad o feature.
 - Tiene que estar escrita desde la perspectiva del usuario.
@@ -44,11 +48,11 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
 | ACTION    | CLICKS "Buy" BUTTON        | WHEN    |
 | RESULT    | PRODUCT AÑADIDO A LA CESTA | THEN    |
  
-## Gherkin Keywords
+## Gherkin Keywords <a name="gherkinKeywords"></a>
 
 #### General
 
-- **Feature**
+- **Feature** <a name="feature"></a>
    Agrupa escenario relacionados. Una feature está compuesta por Summary, Description y List of scenarios. 
   - **Summary**
     One line summary por cada feature. Summary de ejemplo para un E-commerce store:
