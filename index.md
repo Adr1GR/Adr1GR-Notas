@@ -9,7 +9,7 @@ layout: default
 # Contendido
 1. [Documentado user stories](#documentingUserStories)
 2. [Gherkin Keywords](#gherkinKeywords)
-    - [Feature](#feature)
+
 # Notas Gherkin 
 
 ## Documenting user stories <a name="documentingUserStories"></a>
@@ -52,7 +52,7 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
 
 #### General
 
-- **Feature** <a name="feature"></a>
+- **Feature**
    Agrupa escenario relacionados. Una feature está compuesta por Summary, Description y List of scenarios. 
   - **Summary**
     One line summary por cada feature. Summary de ejemplo para un E-commerce store:
@@ -187,5 +187,131 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
     * I buy bananas
     * I buy cucumber
     * I buy sausage
+    ```
+
+- **Rule** *Opcional*
+    Agrupa uno o mas escenarios que tienen las mismas business rules.
+    Es simplemente un mecanismo para agrupar.
+    
+- **Background**
+    Se usa cuando varios escenarios repiten Given statements.
+    Por ejemplo, teniendo esto
+    ```
+    SCENARIO: example
+    GIVEN I am logged in
+    AND I have permissions to access x page
+    WHEN ...
+
+    SCENARIO: example 2
+    GIVEN I am logged in
+    AND I have permissions to access x page
+    WHEN ...
+    ```
+
+    Se puede corregir a esto
+    ```
+    BACKGROUND:
+    GIVEN I am logged in
+    AND I have permissions to access x page
+
+    SCENARIO: example 1
+    WHEN ...
+    ...
+
+    SCENARIO: example 2
+    WHEN ...
+    ...
+    ```
+
+    Si hay background lo primero que se ejecuta es este antes que cada escenario.
+
+- **Scenario outline**
+    Basicamente es un template de scenarios, cuando por ejemplo tienes los mismo escenarios pero con distintos valores.
+
+    Ejemplo:
+    ```
+    SCENARIO: example 1
+    GIVEN product has stock level 10
+    WHEN basket quantity changes by 2
+    THEN stock level is 8
+    ...
+
+    SCENARIO: example 2
+    GIVEN product has stock level 8
+    WHEN basket quantity changes by -1
+    THEN stock level is 9
+    ...
+    ```
+
+    se puede corregir a esto
+    ```
+    SCENARIO OUTLINE:
+    GIVEN product has stock level <begin>
+    WHEN basket quantity changes by <basket>
+    THEN stock level is <end>
+
+    EXAMPLES:
+    | begin | basket | end |
+    | 10    | 2      | 8   |
+    | 8     | -1     | 9   |
+    ```
+
+- **@ TAG**
+    Se usa para categorizar un escenario o feature dentro de la implementacion de Cucumber.
+    
+    ```
+    @exampletag
+    FEATURE some feature
+
+    @anotherexampletag
+    SCENARIO ....
+    GIVEN .....
+    ```
+
+    tambien se le pueden dar mas de un tag:
+    ```
+    @exampletag
+    @exampletag2
+    FEATURE some feature
+
+    @anotherexampletag
+    @anotherexampletag2
+    SCENARIO ....
+    GIVEN .....
+    ```
+
+    Ayuda a cucumber a ejecutar ciertas features o escenarios que matcheen tags.
+
+    Si tiene el tag ```@ignore``` no se ejecutara.
+
+- **Comments**
+    Na, se escriben con ```# comentario```, nunca poner el comentario al lao de algo, siempre arriba.
+
+- **DOC STRINGS**
+    Se usan cuando se quiere escribir mucho, comentarios.
+
+    ```
+    """"
+    Some example text
+    =================
+    Some really long example test for some step
+    """"
+    ```
+
+    Tambien se pueden escribir con ``` en vez que con """".
+
+- **Datatables**
+    Se usan para pasar una lista de valores a un step.
+    ```
+    GIVEN the following quantities:
+    | product | stock | basket |
+    | tv      | 1     | 1      |
+    | fridge  | 10    | 1      |
+    ```
+
+- **#Language**
+    Usar al principio de cada feature. (Recomendacion)
+    ```
+    # language: es
     ```
 
