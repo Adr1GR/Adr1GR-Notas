@@ -48,21 +48,25 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
 
 #### General
 
-- **Feature**: Agrupa escenario relacionados. Una feature está compuesta por Summary, Description y List of scenarios. 
-  - **Summary**: One line summary por cada feature. Summary de ejemplo para un E-commerce store:
+- **Feature**
+   Agrupa escenario relacionados. Una feature está compuesta por Summary, Description y List of scenarios. 
+  - **Summary**
+    One line summary por cada feature. Summary de ejemplo para un E-commerce store:
     ```
     "Shopping basket"
     "Checkout"
     "Authentication"
     "Feature #112" (Si se usa Agile por ejemplo)
     ```
-  - **Description**: Es opcional y puede componerse por mas de una linea de texto. 
+  - **Description**
+    Es opcional y puede componerse por mas de una linea de texto. 
     Ejemplo: 
     ```
     Feature: Shopping Basket
     User should be able amend the items in the basket, change quantities, clear the basket //esta es la descripcion
     ```
-  - **List of scenarios**: Debe contener una lista de todos los escenarios.
+  - **List of scenarios**
+    Debe contener una lista de todos los escenarios.
     Ejemplo:
     ```
     Feature: Shopping Basket
@@ -70,9 +74,11 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
         Scenaro: ...
         Scenaro: ...
         Scenaro: ...
+    ```
 
-- **Scenario**: Tambien llamado 'example' en algunas implementaciones. Un scenario es una situacion que puede ser testeada, un ejemplo en concreto que ilustra una business rule.
-  Un scenario tiene 3 cosas:
+- **Scenario**
+    Tambien llamado 'example' en algunas implementaciones. Un scenario es una situacion que puede ser testeada, un ejemplo en concreto que ilustra una business rule.
+    Un scenario tiene 3 cosas:
   - **Sumary**: Basicamente el titulo.
     ```
     "User can view a product details"
@@ -89,3 +95,93 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
 #### Steps keywords
 
 - **Given**
+    Describe el contexto inicial de la situacion, la "escena" del escenario, normalmente algo que ha pasado en el pasado.
+    ```
+    "Given I am logged in"
+    "Given I have a product in the shopping basket"
+    "Given I have a balance of 70"
+    "Given I am a registered user"
+    ```
+
+- **When**
+    Describe la accion que tiene que pasar
+    Triggered por un actor, puede ser por una persona o por algo del sistema
+    ```
+    "When I click the loggin button"
+    "When I click the add to cart button"
+    "When credit amount is received"
+    "When withdrawal succeeds"
+    ```
+
+- **Then**
+    Describe el resultado o el outcome esperado.
+    Tiene que ser observable, por el punto de vista del usuario, o un reporte o incluso un email, por ejemplo. **No puede estar escondido del usuario, como un cambio en la base de datos por ejemplo**
+    ```
+    "Then an alert appears on screen"
+    "Then an email is sent"
+    "Then a message appears"
+    "Then product is removed from the shopping basket"
+    ```
+
+- **And**
+    Se usa para remplazar cuando se tienen multiples Given, When o Then
+
+    Por ejemplo, teniendo esto:
+    ```
+    GIVEN something
+    GIVEN something else
+    GIVEN something more
+    ```
+
+    puedes corregirlo a esto:
+    ```
+    Given something
+    AND something else
+    AND something more
+    ```
+
+    El software lo usa igual, solo que a la hora de que una persona lo lea es mas sencillo de entender.
+
+- **But**
+    Se puede usar cuando el resultado esperado implica algo negativo.
+    Por ejemplo, de esto:
+    ```
+    THEN some result
+    THEN something should not happen
+    ```
+    a esto:
+    ```
+    THEN some result
+    BUT something else should not happen
+    ```
+
+    Ejemplo:
+    ```
+    THEN control is in Edit mode
+    AND Save button is visible
+    AND Edit button is not visible
+    ```
+    se deberia corregir de la siguiente manera:
+    ```
+    THEN control is in Edit mode
+    AND Save button is visible
+    BUT Edit button is not visible
+    ```
+
+- **Asterix (*)**
+    Se puede usar cuando hay una lista de cosas, por ejemplo:
+    Teniendo
+    ```
+    GIVEN I am grocery shopping
+    GIVEN I buy bananas
+    GIVEN I buy cucumber
+    GIVEN I buy sausage
+    ```
+    se puede corregir a 
+    ```
+    GIVEN I am grocery shopping
+    * I buy bananas
+    * I buy cucumber
+    * I buy sausage
+    ```
+
