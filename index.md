@@ -9,7 +9,7 @@ layout: default
 # Contendido
 1. [Documentado user stories](#documentingUserStories)
 2. [Gherkin Keywords](#gherkinKeywords)
-    - [Feature]()
+    - [Feature](#feature)
 # Notas Gherkin 
 
 ## Documenting user stories <a name="documentingUserStories"></a>
