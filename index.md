@@ -10,6 +10,7 @@ layout: default
 1. [Documentado user stories](#documentingUserStories)
 2. [Gherkin Keywords](#gherkinKeywords)
 
+
 # Notas Gherkin 
 
 ## Documenting user stories <a name="documentingUserStories"></a>
@@ -175,13 +176,16 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
 - **Asterix (*)**
     Se puede usar cuando hay una lista de cosas, por ejemplo:
     Teniendo
+    
     ```
     GIVEN I am grocery shopping
     GIVEN I buy bananas
     GIVEN I buy cucumber
     GIVEN I buy sausage
     ```
+
     se puede corregir a 
+
     ```
     GIVEN I am grocery shopping
     * I buy bananas
@@ -290,7 +294,6 @@ Esto ayuda a la hora de pasarlo a Gherkin, porque ahora solo hay que pasarlo. Es
 - **DOC STRINGS**
     Se usan cuando se quiere escribir mucho, comentarios.
 
-    ```
     """"
     Some example text
     =================
